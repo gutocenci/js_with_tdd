@@ -7,6 +7,11 @@
         <h1>CURSO JS COM TDD</h1>
         <button id="btn">Make my sandwich !</button>
         <button id="btnReduce">Reduce learning !</button>
+        <ul id="table">
+            <li>Primeiro</li>
+            <li>Segundo</li>
+            <li>Terceiro</li>
+        </ul>
     </body>
     <script>
 
@@ -123,5 +128,60 @@
         withoutGambParams('testeNome', 'testeNickName')
         withoutGambParams()
 
-        </script>
+        //Metodos String ES6
+        var string = 'string include '
+        console.log(string.startsWith('s'))  //Returno boolean TREU
+        console.log(string.startsWith('t',2)) //False terceiro elemento é 't'
+        console.log(string.repeat(20));
+        console.log(string.endsWith('include ')); // true
+        console.log(string.includes('include'))
+
+        //Metodos Array ES6
+        var string = 'string to array'
+        console.log(Array.from(string))
+        var tableHtml = document.querySelectorAll('#table li')
+        console.log('List HTML tipo NodeList',tableHtml) // Mas quero manipular como Arry por causa dos metodos
+        var listArray = Array.from(tableHtml)
+        var funcMap = listArray.map((list) => list.textContent)
+        console.log(funcMap)
+
+        var makeArray = Array.of([1,10,'texto',{nome: 'ABC',marca:'NANI'}]) //Cria uma Array de forma Rapida
+        console.log(makeArray)
+
+        var findArray = [
+            {nome:'Gustavo', idade:26},
+            {nome:'Geraldo', idade:52}
+        ]
+        
+        var indexArray = findArray.find(person => person.nome == 'Gustavo') //Acha o Index
+        var firstElementArray = findArray.findIndex(person => person.nome == 'Gustavo') //Acha o primeiro obejto que dar Match
+        console.log('Index',indexArray)
+        console.log('Elemento do Array',firstElementArray)
+
+        var arrayToFill = new Array(50) //Instacia com 50 elementos
+        var arrayAllFilled = arrayToFill.fill('(>-_-)>')
+        console.log('Fill todos os elementos',arrayAllFilled)
+        var arrayPArtFilled = arrayToFill.fill('(>-_-)>', 1, 3)        
+        console.log('Fill parte dos elementos',arrayPArtFilled)
+
+        var arrayToDescruct = {
+            nome:'Cenci',
+            nascimento: {
+                dia: 15,
+                mes: 07,
+                ano: 1991 }
+        }
+
+        //Forma gambiara de atribuição, longa e repetitiva
+        var nome = arrayToDescruct.nome
+        var diaNascimento = arrayToDescruct.nascimento.dia
+
+        //Forma correta que se não existir já adiciona VALOR ao elemento
+
+        var { nome } = arrayToDescruct
+        var { hora = '10:40' } = arrayToDescruct.nascimento
+        console.log('NOME',nome)
+        console.log('HORA',hora)
+
+    </script>
 </html>
