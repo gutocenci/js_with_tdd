@@ -1,0 +1,127 @@
+<!DOCTYPE-HTML>
+<html>
+    <head>
+        <title>ABA</title>
+    </head>
+    <body>
+        <h1>CURSO JS COM TDD</h1>
+        <button id="btn">Make my sandwich !</button>
+        <button id="btnReduce">Reduce learning !</button>
+    </body>
+    <script>
+
+    //REDUCES ARROW FUNC
+    const btnReduce = document.getElementById('btnReduce')
+    btnReduce.addEventListener('click', ()=>{reduceTest()});
+
+    function reduceTest(){
+        reduceTeste.reduce((acc, part)=>{
+            return acc + part
+        },0)
+    }
+
+    //UMA CONST PODE ALTERAR VALOR
+    const reduceTeste = [0,1,2,3,4,5]
+
+        const will = { nome: 'gus', idade: 25};
+        will.nome = 'carlos'
+        console.log(will.nome)
+
+        var nomes = ['Gustavo','Ana','Neto','Fer'];
+        console.log(nomes);
+
+        //TEMPLATE LITERALS E ARRAY PODE TER FUNC SEM PRECISAR ESCREVER FUNC NOVAMENTE
+        var nomeFilter = nomes
+            .filter(nome => nome == 'Ana')
+            .map(nome => `Eu sou o(a) ${nome}`)
+        
+        var sandwich = { bread: 'Filão',
+                            chease: 'Cheder',
+                            prepare: ()=>console.log(`Saindo com ${sandwich.bread} e ${sandwich.chease}`)
+        };
+        const btn = document.getElementById('btn')
+        btn.addEventListener('click', ()=>{sandwich.prepare()});
+
+        //Template literals pega o enter, espaço e etc, nao precisa usar \n por exemplo
+        console.log(`${nomes[1]}\n${nomes[2]}\n${nomes[3]}`)
+
+        var templateLIteral = 
+        `babana
+        limao
+        maca`
+        console.log(templateLIteral)
+
+        //Pode usar Arrow func para definir função dentro de arrays
+        const article  = {
+            header: 'OI HEADER',
+            body: 'OI BODY',
+            footer: 'OI FOOTER',
+            language: ['js', 'ts', 'cs'],
+            authot: 'gutocenci',
+            funcs: nome => nome ? nome : `unknown`
+        }
+
+        //If literal como Excel
+        function getAuthor(nome){
+            return (nome) ? nome : `unknown`
+        }
+
+        //Alterando o HTML com template literals, func escopo global ou do array
+        //Join para remover alterar ',' presente entre cada elemento do array 
+        //Metodo JS para alterar uma tag no caso 'body'
+        const markup = `
+        <div>
+            <header>
+                <h1>${article.header}</h1>
+            </header>
+            <body>
+                <p>${article.body}</p>
+                <ul>${article.language.map(language=>`<li>${language}</li>`).join('')}</ul>
+            </body>
+            <footer>
+                <p>${article.footer}</p>
+                <p>${this.getAuthor(article.authot)}</p>
+                <p>${article.funcs(article.authot)}</p>
+            </footer>
+        </div>
+        `
+        document.body.innerHTML = markup;
+
+        //Template literal pode executar uma função antes de sua atribuição
+        //Template literals aceita pegar o [i] de arrays e executar função se o elemento for func
+        var nomes = ['Gustavo','Ana','Neto','Fer'];
+        function greenFont(template, ...values){  
+            return template.reduce((accumulador, part, index)=>{
+                return `${accumulador}
+                        <span style="color: blue">${values[index - 1].toUpperCase()}</span>
+                        ${part}`    
+            })
+        }
+
+        const tagedTemplate = greenFont`I am ${nomes[0]} and my some frinds at FATEC are ${nomes[1]}, ${nomes[2]}, and ${nomes[3]}`
+        document.body.innerHTML = tagedTemplate;
+
+        //Default Params
+        function noneValueParams(name, nickName){
+            return console.log(`Meu nome é ${name} e meu sobrenome é ${nickName}`)
+        }
+
+        noneValueParams()
+
+        function withGambParams(name, nickName){
+            name = name || 'gambName';
+            nickName = nickName || 'gambnickName';
+            return console.log(`Meu nome é ${name} e meu sobrenome é ${nickName}`)
+        }
+
+        withGambParams()
+
+        function withoutGambParams(name = 'Gustavo', nickName = 'Cenci'){
+            return console.log(`Meu nome é ${name} e meu sobrenome é ${nickName}`)
+        }
+
+        withoutGambParams('testeNome', 'testeNickName')
+        withoutGambParams()
+
+        </script>
+</html>

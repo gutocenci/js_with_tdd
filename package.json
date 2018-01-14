@@ -4,6 +4,7 @@
   "description": "Learning TDD with JS",
   "main": "index.js",
   "scripts": {
+    "wow": "git status",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -21,5 +22,8 @@
   "bugs": {
     "url": "https://github.com/gutocenci/js_with_tdd/issues"
   },
-  "homepage": "https://github.com/gutocenci/js_with_tdd#readme"
+  "homepage": "https://github.com/gutocenci/js_with_tdd#readme",
+  "devDependencies": {
+    "eslint": "^4.15.0"
+  }
 }
