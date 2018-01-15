@@ -164,7 +164,7 @@
         var arrayPArtFilled = arrayToFill.fill('(>-_-)>', 1, 3)        
         console.log('Fill parte dos elementos',arrayPArtFilled)
 
-        var arrayToDescruct = {
+        var objToDescruct = {
             nome:'Cenci',
             nascimento: {
                 dia: 15,
@@ -172,16 +172,45 @@
                 ano: 1991 }
         }
 
+        var arrayToDescruct = ['Cenci','15/07/1991']
+
+        var [name, dtNasc] = arrayToDescruct
+        console.log(name, dtNasc)
+
         //Forma gambiara de atribuição, longa e repetitiva
         var nome = arrayToDescruct.nome
-        var diaNascimento = arrayToDescruct.nascimento.dia
+       // var diaNascimento = arrayToDescruct.nascimento.dia
 
         //Forma correta que se não existir já adiciona VALOR ao elemento
 
-        var { nome } = arrayToDescruct
-        var { hora = '10:40' } = arrayToDescruct.nascimento
+        var { nome } = objToDescruct
+        var { hora = '10:40' } = objToDescruct.nascimento
         console.log('NOME',nome)
         console.log('HORA',hora)
+
+        //SWAP DE VARIAVES COM DESCRITURING
+        var a = 10;
+        var b = 20;
+        [a, b] = [b ,a];
+        console.log('A SWAP',a);
+        console.log('B SWAP',b);
+
+        //SPREAD
+        var arrayOne = ['A','B','C']
+        var arrayTwo = ['E','F','G']
+
+        var spreadArray = [...arrayOne, 'D',... arrayTwo]
+        console.log('Spread',spreadArray)
+
+        //Chamar a função usando o spread de um tipo interavel
+        var ingredientes = ['Filão', 'Batata', 'Barbacue'];
+        function makeLanche(valFIXO, tipoPao, Legume, Molho) {
+            console.log(valFIXO + ` Your ${tipoPao}, com ${Legume} acompanhado de ${Molho} esta pronto`)
+        }
+        makeLanche(FIXO = 99, ...ingredientes)
+
+        //PROMISE Evitando CALL BACK HELSS
+
 
     </script>
 </html>
