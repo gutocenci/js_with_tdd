@@ -210,7 +210,79 @@
         makeLanche(FIXO = 99, ...ingredientes)
 
         //PROMISE Evitando CALL BACK HELSS
+        //3 Estados resolve, reject, pendind
+        const promisseRapida = new Promise((resolve, reject)=>{
+            setTimeout(()=>{
+                resolve(['gustavao','montanini','cenci'])
+            }, 3000)
+        });
 
+        const promisseLenta = new Promise((resolve, reject)=>{
+            setTimeout(()=>{
+                resolve({nome:'gustavao',meio:'montanini',fim:'cenci'})
+            }, 5000)
+        });
+
+        promisseRapida
+            .then((data)=>{
+                console.log('Data promisse rapida',data)
+                return data
+            })
+            .then(data => data.map( data =>{
+                console.log(data[1])
+                throw new Error('ixi de erro')
+            }))
+            .catch(erro => console.log(erro)) 
+
+        promisseLenta
+        .then((data)=>{
+            console.log('Data promisse Lenta',data)
+        })
+
+        //CLASSE//
+        //CONSTRUTOR//
+        function Animal(nome, tamanho){
+            this.nome = nome;
+            this.tamanho = tamanho;
+        }
+        //METODOS//
+        Animal.prototype.hello = function(){
+            return `Sou ${this.tamanho} da raça ${this.nome}`
+        }
+
+        //INSTANCIANDO OBJ
+        const animal = new Animal('cachorro', 'grande')
+
+        //UTILIZANDO Atributos e Metodos da classe Animal
+        console.log(animal.hello())
+        console.log('Aributo nome',animal.nome)
+        console.log('Atributo tamanho',animal.tamanho)
+
+        //Fazendo a msm coisa com a feature CLASS
+        class Casa{
+                constructor(mtrs, quartos){
+                this.mtrs = mtrs;
+                this.quartos = quartos;
+            }
+            
+            infoHouse(){
+                return console.log(`A Casa tem ${this.mtrs} metros e ${this.quartos} quartos`)
+            }
+
+            get mtrsCasa(){
+                console.log(`${this.mtrs}`)
+            }
+
+            set areaUtil(areaUtil){
+                this.areaUtil = areaUtil
+            }
+        }
+
+        const casaObj = new Casa(55,2);
+        console.log('Atributos Classe Casa',casaObj)
+        console.log(casaObj.infoHouse())
+        // console.log('Get',casaObj.mtrsCasa());
+        // this.casaObj.areaUtil(85);
 
     </script>
 </html>
